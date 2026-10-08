@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Le Jardin | French Fine Dining</title>
+  <meta name="description" content="Discover Le Jardin, an elegant French fine dining experience inspired by seasonal ingredients and timeless culinary artistry.">
+  <meta name="theme-color" content="#f6f3eb">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #f6f3eb;
+      --green: #233d31;
+      --gold: #b89b66;
+      --ink: #252820;
+      --muted: #77766d;
+      --light: #ebe7dc;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.6;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    .navbar {
+      min-height: 82px;
+      padding: 18px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      background: var(--cream);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(35, 61, 49, 0.08);
+    }
+
+    .logo {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 27px;
+      letter-spacing: 3px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a,
+    .nav-button {
+      font-size: 12px;
+      transition: color .25s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-button {
+      border: 1px solid var(--green);
+      padding: 12px 16px;
+      white-space: nowrap;
+    }
+
+    .nav-button:hover {
+      background: var(--green);
+      color: var(--cream);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--green);
+      color: var(--green);
+      padding: 9px 12px;
+      cursor: pointer;
+    }
+
+    .hero {
+      min-height: 650px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 90px 10%;
+      color: white;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(15, 29, 21, .85),
+          rgba(15, 29, 21, .12)
+        ),
+        url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=2000&q=90")
+        center 55% / cover;
+    }
+
+    .hero-content {
+      max-width: 620px;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 10px;
+      letter-spacing: 3px;
+      margin-bottom: 22px;
+    }
+
+    h1, h2, h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 400;
+      line-height: 1.1;
+    }
+
+    h1 {
+      font-size: clamp(54px, 7vw, 92px);
+      line-height: .98;
+    }
+
+    h1 em, h2 em {
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    .intro {
+      max-width: 410px;
+      line-height: 1.9;
+      margin: 26px 0 32px;
+      font-size: 14px;
+      color: #e5e5dc;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 25px;
+    }
+
+    .button-primary {
+      display: inline-block;
+      padding: 15px 22px;
+      background: var(--gold);
+      color: #17251c;
+      font-size: 12px;
+      border: 1px solid var(--gold);
+      transition: .25s;
+    }
+
+    .button-primary:hover {
+      background: #d3ba8b;
+      border-color: #d3ba8b;
+      transform: translateY(-2px);
+    }
+
+    .text-link {
+      font-size: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, .6);
+      padding-bottom: 4px;
+    }
+
+    .text-link:hover {
+      color: var(--gold);
+    }
+
+    .hero-caption {
+      position: absolute;
+      right: 7%;
+      bottom: 28px;
+      font-size: 9px;
+      letter-spacing: 2px;
+    }
+
+    .story, .reservation {
+      text-align: center;
+      padding: 100px 24px;
+    }
+
+    .story h2, .reservation h2 {
+      font-size: clamp(40px, 5vw, 62px);
+    }
+
+    .story-description {
+      max-width: 580px;
+      margin: 25px auto 0;
+      font-size: 14px;
+      line-height: 2;
+      color: #68685f;
+    }
+
+    .menu-section {
+      background: var(--light);
+      padding: 85px 7%;
+      text-align: center;
+    }
+
+    .menu-section h2 {
+      font-size: clamp(38px, 5vw, 50px);
+      margin-bottom: 14px;
+    }
+
+    .section-description {
+      max-width: 540px;
+      margin: 0 auto 40px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 26px;
+      text-align: left;
+    }
+
+    .menu-card {
+      min-width: 0;
+    }
+
+    .menu-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      background: #ddd7c9;
+      transition: transform .4s;
+    }
+
+    .menu-card:hover img {
+      transform: scale(1.02);
+    }
+
+    .menu-image {
+      overflow: hidden;
+    }
+
+    .menu-card h3 {
+      font-size: 27px;
+      margin-top: 18px;
+    }
+
+    .menu-card p {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 7px;
+    }
+
+    .menu-price {
+      display: block;
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--green);
+    }
+
+    .menu-more {
+      margin-top: 42px;
+    }
+
+    .button-outline {
+      display: inline-block;
+      padding: 14px 23px;
+      border: 1px solid var(--green);
+      color: var(--green);
+      font-size: 12px;
+      transition: .25s;
+    }
+
+    .button-outline:hover {
+      background: var(--green);
+      color: white;
+    }
+
+    .reservation {
+      background: var(--green);
+      color: var(--cream);
+    }
+
+    .reservation h2 {
+      margin-bottom: 18px;
+    }
+
+    .reservation-description {
+      max-width: 480px;
+      margin: 0 auto 28px;
+      color: #d9ded5;
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .reservation-note {
+      margin-top: 18px;
+      color: #d9ded5;
+      font-size: 11px;
+    }
+
+    footer {
+      padding: 42px 7% 25px;
+      text-align: center;
+    }
+
+    footer p {
+      margin: 10px 0 24px;
+      color: var(--muted);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 20px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 22px;
+      margin-bottom: 28px;
+      font-size: 12px;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    footer small {
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 900px) {
+      .navbar {
+        padding: 18px 5%;
+        gap: 15px;
+      }
+
+      .nav-links {
+        gap: 17px;
+      }
+
+      .nav-links a {
+        font-size: 11px;
+      }
+
+      .nav-button {
+        padding: 10px 12px;
+        font-size: 11px;
+      }
+
+      .menu-grid {
+        gap: 18px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .navbar {
+        flex-wrap: wrap;
+      }
+
+      .logo {
+        font-size: 24px;
+      }
+
+      .menu-toggle {
+        display: inline-block;
+        margin-left: auto;
+      }
+
+      .nav-button {
+        display: none;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--cream);
+        padding: 24px 7%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 22px;
+        border-bottom: 1px solid #ded8ca;
+      }
+
+      .nav-links.is-open {
+        display: flex;
+      }
+
+      .nav-links a {
+        font-size: 13px;
+      }
+
+      .hero {
+        min-height: 590px;
+        padding: 75px 7%;
+        background-position: 58% center;
+      }
+
+      .hero-content {
+        max-width: 100%;
+      }
+
+      .hero-caption {
+        right: 7%;
+        font-size: 8px;
+      }
+
+      .story, .reservation {
+        padding: 75px 7%;
+      }
+
+      .menu-section {
+        padding: 70px 7%;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .menu-card img {
+        aspect-ratio: 5 / 4;
+      }
+
+      .menu-card h3 {
+        font-size: 25px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="navbar">
+    <a href="jardin.html" class="logo" aria-label="Le Jardin home">
+      LE JARDIN<span>.</span>
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="primary-navigation"
+    >
+      ☰ Menu
+    </button>
+
+    <nav class="nav-links" id="primary-navigation" aria-label="Main navigation">
+      <a href="jardin.html">Home</a>
+      <a href="#story">Our Story</a>
+      <a href="menu.html">Menu</a>
+      <a href="#gallery">Gallery</a>
+    </nav>
+
+    <a href="#reservation" class="nav-button">Reserve a Table ↗</a>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <p class="eyebrow">FRENCH FINE DINING · EST. 2026</p>
+        <h1>Where Elegance<br>Meets <em>Nature.</em></h1>
+
+        <p class="intro">
+          An extraordinary dining experience inspired by
+          the timeless beauty of French cuisine.
+        </p>
+
+        <div class="hero-actions">
+          <a href="menu.html" class="button-primary">
+            Explore Our Menu ↗
+          </a>
+          <a href="#story" class="text-link">
+            Discover Our Story
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-caption">A PLACE TO SAVOR EVERY MOMENT</div>
+    </section>
+
+    <section class="story" id="story">
+      <p class="eyebrow">OUR PHILOSOPHY</p>
+      <h2>More than a meal.<br><em>A lasting memory.</em></h2>
+
+      <p class="story-description">
+        Inspired by the art of French dining, Le Jardin brings
+        together seasonal ingredients, thoughtful craftsmanship,
+        and an atmosphere designed for unforgettable moments.
+      </p>
+    </section>
+
+    <section class="menu-section" id="signature-menu">
+      <p class="eyebrow">A TASTE OF LE JARDIN</p>
+      <h2>Our Signature Menu</h2>
+
+      <p class="section-description">
+        Discover a selection of our signature creations,
+        thoughtfully prepared to celebrate the art of French cuisine.
+      </p>
+
+      <div class="menu-grid">
+        <article class="menu-card">
+          <div class="menu-image">
+            <img
+              src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=800&q=85"
+              alt="Fresh pasta served with herbs"
+              loading="lazy"
+            >
+          </div>
+          <h3>Tagliatelle Maison</h3>
+          <p>Fresh pasta, garden herbs & parmesan.</p>
+          <span class="menu-price">Rp145.000</span>
+        </article>
+
+        <article class="menu-card">
+          <div class="menu-image">
+            <img
+              src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=85"
+              alt="Grilled meat prepared for fine dining"
+              loading="lazy"
+            >
+          </div>
+          <h3>Le Jardin Steak</h3>
+          <p>Grilled beef, seasonal vegetables & jus.</p>
+          <span class="menu-price">Rp285.000</span>
+        </article>
+
+        <article class="menu-card">
+          <div class="menu-image">
+            <img
+              src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=800&q=85"
+              alt="Elegant dessert served on a plate"
+              loading="lazy"
+            >
+          </div>
+          <h3>Vanilla Pâtisserie</h3>
+          <p>Delicate pastry & silky vanilla cream.</p>
+          <span class="menu-price">Rp85.000</span>
+        </article>
+      </div>
+
+      <div class="menu-more">
+        <a href="menu.html" class="button-outline">
+          Discover the Full Menu ↗
+        </a>
+      </div>
+    </section>
+
+    <section class="reservation" id="reservation">
+      <p class="eyebrow">YOUR TABLE AWAITS</p>
+      <h2>Make the moment <em>special.</em></h2>
+
+      <p class="reservation-description">
+        Whether it is an intimate dinner or a special celebration,
+        let us help make your visit memorable.
+      </p>
+
+      <a
+        class="button-primary"
+        href="mailto:reservations@lejardin.example?subject=Table%20Reservation"
+      >
+        Inquire for a Reservation ↗
+      </a>
+
+      <p class="reservation-note">
+        Please replace the sample email with your actual reservation email.
+      </p>
+    </section>
+  </main>
+
+  <footer id="gallery">
+    <a href="index.html" class="logo">LE JARDIN<span>.</span></a>
+    <p>A Taste of Timeless Elegance.</p>
+
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="menu.html">Our Menu</a>
+      <a href="#reservation">Reservations</a>
+      <a href="#home">Back to Top ↑</a>
+    </div>
+
+    <small>© 2026 Le Jardin. A concept restaurant website.</small>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("is-open");
+
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu"
+      );
+      menuToggle.innerHTML = isOpen ? "✕ Close" : "☰ Menu";
+      document.body.classList.toggle("menu-open", isOpen);
+    });
+
+    // Close the mobile menu after selecting a link.
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("is-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+        menuToggle.innerHTML = "☰ Menu";
+        document.body.classList.remove("menu-open");
+      });
+    });
+
+    // Smooth-scroll only for links targeting sections on this page.
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const selector = link.getAttribute("href");
+        const target = document.querySelector(selector);
+
+        if (target) {
+          event.preventDefault();
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

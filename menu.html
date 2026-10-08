@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Our Menu | Le Jardin</title>
+  <meta name="description" content="Discover the exquisite French fine dining menu at Le Jardin. Crafted with seasonal ingredients and timeless French techniques.">
+
+  <!-- Elegant typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================
+       GLOBAL STYLES
+    ========================= */
+    :root {
+      --green: #183b30;
+      --green-dark: #102b23;
+      --cream: #f7f4ed;
+      --cream-light: #fffdf8;
+      --gold: #b99a61;
+      --text: #25352d;
+      --muted: #77786f;
+      --border: #e4ded1;
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: "DM Sans", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(247, 244, 237, 0.96);
+      border-bottom: 1px solid rgba(185, 154, 97, 0.25);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-container {
+      width: min(1180px, 90%);
+      min-height: 82px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      color: var(--green);
+      font-family: var(--serif);
+      font-size: 34px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      line-height: 1;
+    }
+
+    .brand span {
+      display: block;
+      margin-top: 7px;
+      color: var(--gold);
+      font-family: var(--sans);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.7px;
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--gold);
+    }
+
+    .nav-links .nav-cta {
+      padding: 12px 18px;
+      background: var(--green);
+      color: white;
+      transition: background 0.25s ease;
+    }
+
+    .nav-links .nav-cta:hover {
+      background: var(--green-dark);
+      color: white;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--green);
+      cursor: pointer;
+      font-size: 23px;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+    .menu-hero {
+      position: relative;
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background:
+        linear-gradient(
+          rgba(13, 36, 28, 0.65),
+          rgba(13, 36, 28, 0.72)
+        ),
+        url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=2000&q=85")
+        center 55% / cover no-repeat;
+      text-align: center;
+      color: white;
+    }
+
+    .hero-content {
+      width: min(800px, 90%);
+      padding: 75px 0;
+    }
+
+    .hero-content .eyebrow {
+      margin-bottom: 18px;
+    }
+
+    .hero-content h1 {
+      font-family: var(--serif);
+      font-size: clamp(54px, 8vw, 92px);
+      font-weight: 400;
+      line-height: 0.98;
+      letter-spacing: -1px;
+    }
+
+    .hero-content h1 em {
+      color: #d9c39a;
+      font-weight: 400;
+    }
+
+    .hero-content p {
+      max-width: 510px;
+      margin: 24px auto 0;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .hero-divider {
+      width: 55px;
+      height: 1px;
+      margin: 27px auto 0;
+      background: var(--gold);
+    }
+
+    /* =========================
+       MENU SECTION
+    ========================= */
+    .menu-section {
+      width: min(1180px, 90%);
+      margin: auto;
+      padding: 90px 0 110px;
+    }
+
+    .section-heading {
+      max-width: 650px;
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      margin-top: 12px;
+      color: var(--green);
+      font-family: var(--serif);
+      font-size: clamp(38px, 5vw, 56px);
+      font-weight: 500;
+      line-height: 1.1;
+    }
+
+    .section-heading p {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Category filters */
+    .filter-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 42px;
+    }
+
+    .filter-btn {
+      padding: 10px 17px;
+      border: 1px solid #d9d2c5;
+      background: transparent;
+      color: #5e665e;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.4px;
+      transition:
+        color 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      border-color: var(--green);
+      background: var(--green);
+      color: white;
+    }
+
+    .menu-status {
+      min-height: 24px;
+      margin: -25px 0 28px;
+      color: var(--muted);
+      font-size: 11px;
+      text-align: center;
+    }
+
+    /* Menu cards */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 30px;
+    }
+
+    .menu-card {
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid rgba(185, 154, 97, 0.22);
+      background: var(--cream-light);
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+      animation: fadeUp 0.4s ease both;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(24, 59, 48, 0.09);
+    }
+
+    .menu-card[hidden] {
+      display: none;
+    }
+
+    .menu-image {
+      position: relative;
+      height: 235px;
+      overflow: hidden;
+      background: #e9e3d8;
+    }
+
+    .menu-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .menu-card:hover .menu-image img {
+      transform: scale(1.05);
+    }
+
+    .dish-label {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      padding: 7px 11px;
+      background: rgba(247, 244, 237, 0.94);
+      color: var(--green);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+    }
+
+    .menu-info {
+      padding: 24px 24px 26px;
+    }
+
+    .menu-title-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .menu-title-row h3 {
+      color: var(--green);
+      font-family: var(--serif);
+      font-size: 27px;
+      font-weight: 600;
+      line-height: 1.1;
+    }
+
+    .menu-price {
+      flex-shrink: 0;
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 23px;
+      font-weight: 600;
+      line-height: 1.1;
+    }
+
+    .menu-description {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    .menu-card-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid var(--border);
+    }
+
+    .dish-type {
+      color: #8a8b80;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .dish-note {
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    .empty-state {
+      display: none;
+      padding: 45px 20px;
+      border: 1px dashed var(--border);
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .empty-state.show {
+      display: block;
+    }
+
+    .empty-state h3 {
+      margin-bottom: 8px;
+      color: var(--green);
+      font-family: var(--serif);
+      font-size: 30px;
+    }
+
+    /* =========================
+       RESERVATION BANNER
+    ========================= */
+    .reservation-banner {
+      padding: 70px 20px;
+      background: var(--green);
+      color: white;
+      text-align: center;
+    }
+
+    .reservation-banner h2 {
+      margin-top: 12px;
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 52px);
+      font-weight: 400;
+      line-height: 1.1;
+    }
+
+    .reservation-banner p {
+      max-width: 500px;
+      margin: 18px auto 25px;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 13px;
+    }
+
+    .gold-button {
+      display: inline-block;
+      padding: 14px 24px;
+      border: 1px solid var(--gold);
+      background: var(--gold);
+      color: #142c22;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.25s ease;
+    }
+
+    .gold-button:hover {
+      background: transparent;
+      color: white;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+    .site-footer {
+      padding: 32px 5%;
+      background: var(--green-dark);
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .footer-inner {
+      width: min(1180px, 100%);
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-brand {
+      color: white;
+      font-family: var(--serif);
+      font-size: 25px;
+    }
+
+    .footer-copy {
+      font-size: 10px;
+      text-align: right;
+    }
+
+    /* =========================
+       ANIMATION
+    ========================= */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* =========================
+       TABLET
+    ========================= */
+    @media (max-width: 900px) {
+      .nav-links {
+        gap: 18px;
+      }
+
+      .menu-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .menu-image {
+        height: 220px;
+      }
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+    @media (max-width: 650px) {
+      .nav-container {
+        min-height: 72px;
+      }
+
+      .brand {
+        font-size: 30px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        display: none;
+        align-items: stretch;
+        gap: 0;
+        padding: 10px 5% 20px;
+        border-bottom: 1px solid var(--border);
+        background: var(--cream);
+      }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .nav-links li {
+        width: 100%;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 12px 4px;
+      }
+
+      .nav-links .nav-cta {
+        margin-top: 7px;
+        padding: 12px 15px;
+        text-align: center;
+      }
+
+      .menu-hero {
+        min-height: 350px;
+      }
+
+      .hero-content {
+        padding: 60px 0;
+      }
+
+      .hero-content h1 {
+        font-size: 58px;
+      }
+
+      .hero-content p {
+        font-size: 12px;
+      }
+
+      .menu-section {
+        padding: 65px 0 75px;
+      }
+
+      .filter-wrap {
+        gap: 8px;
+        margin-bottom: 35px;
+      }
+
+      .filter-btn {
+        padding: 9px 12px;
+        font-size: 10px;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .menu-image {
+        height: 250px;
+      }
+
+      .menu-info {
+        padding: 22px;
+      }
+
+      .reservation-banner {
+        padding: 55px 20px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-copy {
+        text-align: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <nav class="nav-container" aria-label="Navigasi utama">
+      <a class="brand" href="jardin.html" aria-label="Le Jardin, halaman utama">
+        Le Jardin
+        <span>French Fine Dining</span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Buka navigasi"
+        aria-expanded="false"
+        aria-controls="nav-links"
+      >☰</button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="jardin.html">Home</a></li>
+        <li><a href="jardin.html#story">Our Story</a></li>
+        <li><a class="active" href="menu.html">Menu</a></li>
+        <li><a href="jardin.html#gallery">Gallery</a></li>
+        <li><a class="nav-cta" href="jardin.html#reservation">Reserve a Table</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="menu-hero">
+      <div class="hero-content">
+        <div class="eyebrow">A Taste of French Elegance</div>
+        <h1>Our <em>Menu</em></h1>
+        <p>
+          A celebration of seasonal ingredients, refined French techniques,
+          and the art of dining beautifully.
+        </p>
+        <div class="hero-divider"></div>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <section class="menu-section" id="menu">
+      <div class="section-heading">
+        <div class="eyebrow">Carefully Crafted, Beautifully Served</div>
+        <h2>Discover Our Selection</h2>
+        <p>
+          Each dish is thoughtfully prepared to bring you a memorable
+          French dining experience.
+        </p>
+      </div>
+
+      <!-- FILTER BUTTONS -->
+      <div class="filter-wrap" aria-label="Filter kategori menu">
+        <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">All Dishes</button>
+        <button class="filter-btn" type="button" data-filter="starter" aria-pressed="false">Starters</button>
+        <button class="filter-btn" type="button" data-filter="soup" aria-pressed="false">Soup &amp; Salad</button>
+        <button class="filter-btn" type="button" data-filter="beef" aria-pressed="false">Beef &amp; Lamb</button>
+        <button class="filter-btn" type="button" data-filter="seafood" aria-pressed="false">Seafood</button>
+        <button class="filter-btn" type="button" data-filter="pasta" aria-pressed="false">Pasta</button>
+        <button class="filter-btn" type="button" data-filter="dessert" aria-pressed="false">Desserts</button>
+        <button class="filter-btn" type="button" data-filter="beverage" aria-pressed="false">Beverages</button>
+      </div>
+
+      <p class="menu-status" id="menu-status" aria-live="polite">
+        Showing all 7 dishes
+      </p>
+
+      <!-- MENU CARDS -->
+      <div class="menu-grid" id="menu-grid">
+
+        <!-- 1. STARTER -->
+        <article class="menu-card" data-category="starter">
+          <div class="menu-image">
+            <img
+              src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
+              alt="Artisan French garden salad"
+              loading="lazy"
+            >
+            <span class="dish-label">Starter</span>
+          </div>
+          <div class="menu-info">
+            <div class="menu-title-row">
+              <h3>Garden Salad</h3>
+              <span class="menu-price">140.000</span>
+            </div>
+            <p class="menu-description">
+              Fresh garden greens, heirloom tomatoes, toasted nuts,
+              and a delicate house-made vinaigrette.
+            </p>
+            <div class="menu-card-bottom">
+              <span class="dish-type">Fresh &amp; Light</span>
+              <span class="dish-note">Chef's Selection</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2. STARTER -->
+        <article class="menu-card" data-category="starter">
+          <div class="menu-image">
+            <img
+              src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
+              alt="Seasonal appetizer with fresh ingredients"
+              loading="lazy"
+            >
+            <span class="dish-label">Starter</span>
+          </div>
+          <div class="menu-info">
+            <div class="menu-title-row">
+              <h3>Seasonal Tartine</h3>
+              <span class="menu-price">160.000</span>
+            </div>
+            <p class="menu-description">
+              Rustic artisan bread, seasonal vegetables, aromatic herbs,
+              and a smooth whipped cheese spread.
+            </p>
+            <div class="menu-card-bottom">
+              <span class="dish-type">Seasonal Produce</span>
+              <span class="dish-note">House Favourite</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. BEEF -->
+        <article class="menu-card" data-category="beef">
+          <div class="menu-image">
+            <img
+              src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=900&q=80"
+              alt="Fine dining beef main course"
+              loading="lazy"
+            >
+            <span class="dish-label">Signature</span>
+          </div>
+          <div class="menu-info">
+            <div class="menu-title-row">
+              <h3>Filet de Boeuf</h3>
+              <span class="menu-price">420.000</span>
+            </div>
+            <p class="menu-description">
+              Tender beef fillet with silky red wine jus,
+              seasonal vegetables, and golden pommes purée.
+            </p>
+            <div class="menu-card-bottom">
+              <span class="dish-type">Main Course</span>
+              <span class="dish-note">Chef's Signature</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4. SEAFOOD -->
+        <article class="menu-card" data-category="seafood">
+          <div class="menu-image">
+            <img
+              src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=900&q=80"
+              alt="Elegant seafood dish with fresh herbs"
+              loading="lazy"
+            >
+            <span class="dish-label">Seafood</span>
+          </div>
+          <div class="menu-info">
+            <div class="menu-title-row">
+              <h3>Poisson du Jour</h3>
+              <span class="menu-price">360.000</span>
+            </div>
+            <p class="menu-description">
+              Fresh fish of the day, gently cooked and served with
+              lemon beurre blanc and seasonal garden vegetables.
+            </p>
+            <div class="menu-card-bottom">
+              <span class="dish-type">Main Course</span>
+              <span class="dish-note">Market Fresh</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5. PASTA -->
+        <article class="menu-card" data-category="pasta">
+          <div class="menu-image">
+            <img
+              src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=900&q=80"
+              alt="Fresh pasta with herbs and parmesan"
+              loading="lazy"
+            >
+            <span class="dish-label">Pasta</span>
+          </div>
+          <div class="menu-info">
+            <div class="menu-title-row">
+              <h3>Tagliatelle Maison</h3>
+              <span class="menu-price">240.000</span>
+            </div>
+            <p class="menu-description">
+              House-style tagliatelle with a rich seasonal sauce,
+              shaved parmesan, and fresh aromatic herbs.
+            </p>
+            <div class="menu-card-bottom">
+              <span class="dish-type">Made with Care</span>
+              <span class="dish-note">House Favourite</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 6. DESSERT -->
+        <article class="menu-card" data-category="dessert">
+          <div class="menu-image">
+            <img
+              src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=80"
+              alt="Elegant French chocolate dessert"
+              loading="lazy"
+            >
+            <span class="dish-label">Dessert</span>
+          </div>
+          <div class="menu-info">
+            <div class="menu-title-row">
+              <h3>Chocolat Délice</h3>
+              <span class="menu-price">150.000</span>
+            </div>
+            <p class="menu-description">
+              An indulgent chocolate creation with velvety cream
+              and a delicate finish of seasonal berries.
+            </p>
+            <div class="menu-card-bottom">
+              <span class="dish-type">Sweet Finale</span>
+              <span class="dish-note">Must Try</span>
+            </div>
+          </div>
+        </article>
+
+
+<!-- 7. BEVERAGE -->
+<article class="menu-card" data-category="beverage">
+  <div class="menu-image">
+    <img
+      src="https://images.unsplash.com/photo-1513558161293-cdaf765edfd7?auto=format&fit=crop&w=900&q=80"
+      alt="Refreshing citrus signature drink"
+      loading="lazy"
+      onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=80';"
+    >
+    <span class="dish-label">Beverage</span>
+  </div>
+
+  <div class="menu-info">
+    <div class="menu-title-row">
+      <h3>Jardin Signature</h3>
+      <span class="menu-price">Rp 120.000</span>
+    </div>
+
+    <p class="menu-description">
+      A refreshing house creation with citrus notes,
+      fragrant botanicals, and a beautifully balanced finish.
+    </p>
+
+    <div class="menu-card-bottom">
+      <span class="dish-type">House Creation</span>
+      <span class="dish-note">Signature Drink</span>
+    </div>
+  </div>
+</article>
+
+      </div>
+
+      <div class="empty-state" id="empty-state">
+        <h3>Coming Soon</h3>
+        <p>Our selection for this category is being prepared.</p>
+      </div>
+    </section>
+
+    <!-- RESERVATION CTA -->
+    <section class="reservation-banner" id="reservation">
+      <div class="eyebrow">An Evening to Remember</div>
+      <h2>Your Table Awaits</h2>
+      <p>
+        Let us welcome you to an intimate dining experience
+        where every detail is thoughtfully considered.
+      </p>
+      <a class="gold-button" href="index.html#reservation">
+        Reserve Your Table
+      </a>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a href="index.html" class="footer-brand">Le Jardin</a>
+      <p class="footer-copy">
+        © <span id="year"></span> Le Jardin French Fine Dining.
+        All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    /* =========================
+       MOBILE NAVIGATION
+    ========================= */
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuToggle.addEventListener("click", function () {
+      const isOpen = navLinks.classList.toggle("open");
+
+      menuToggle.setAttribute("aria-expanded", isOpen);
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Tutup navigasi" : "Buka navigasi"
+      );
+
+      menuToggle.textContent = isOpen ? "×" : "☰";
+    });
+
+    // Tutup menu mobile setelah link dipilih
+    navLinks.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Buka navigasi");
+        menuToggle.textContent = "☰";
+      });
+    });
+
+    /* =========================
+       MENU CATEGORY FILTER
+    ========================= */
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const menuCards = document.querySelectorAll(".menu-card");
+    const menuStatus = document.getElementById("menu-status");
+    const emptyState = document.getElementById("empty-state");
+
+    filterButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        const selectedCategory = button.dataset.filter;
+        let visibleCount = 0;
+
+        // Atur tombol yang aktif
+        filterButtons.forEach(function (item) {
+          const isActive = item === button;
+
+          item.classList.toggle("active", isActive);
+          item.setAttribute("aria-pressed", isActive);
+        });
+
+        // Tampilkan kartu sesuai kategori
+        menuCards.forEach(function (card) {
+          const matches =
+            selectedCategory === "all" ||
+            card.dataset.category === selectedCategory;
+
+          card.hidden = !matches;
+
+          if (matches) {
+            visibleCount++;
+          }
+        });
+
+        // Perbarui informasi jumlah hidangan
+        if (selectedCategory === "all") {
+          menuStatus.textContent = "Showing all " + visibleCount + " dishes";
+        } else {
+          menuStatus.textContent =
+            "Showing " + visibleCount +
+            (visibleCount === 1 ? " dish" : " dishes");
+        }
+
+        // Tampilkan pesan jika kategori masih kosong
+        emptyState.classList.toggle("show", visibleCount === 0);
+      });
+    });
+
+    /* =========================
+       FOOTER YEAR
+    ========================= */
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
